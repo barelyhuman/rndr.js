@@ -1,0 +1,22 @@
+{
+  "name": "rndr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:reap-r/rndr.js.git",
+  "author": "Siddharth Gelera <sidgroks@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2",
+    "live-server": "^1.2.0",
+    "parallelshell": "^3.0.2",
+    "watchify": "^3.11.0"
+  },
+  "scripts": {
+    "start": "parallelshell 'yarn watch' 'yarn serve'",
+    "watch": "mkdir -p dist && watchify lib/rndr.js -v -t babelify --s Rndr -o dist/rndr.bundle.js",
+    "serve": "live-server --entry-file=index.html --no-browser"
+  }
+}

@@ -18,27 +18,24 @@
       {{holyShit}}
     </div>
   </div>
-  <script src="./main.js"></script>
+  <script src="./dist/rndr.bundle.js"></script>
   <script>
-  const app = Rndr({
-  el: ".app"
-});
+
+  const app = new Rndr({el:'.app'});
+
 
 let Index = app.module(function(handler, elem) {
+  app.ext(handler, {
+    message: "Working?",
+    functionText: function() {
+      return "Yep Working";
+    } 
+  });
 
-  app.ext(handler,{
-    message:"Working?",
-    functionText:function(){
-      return "Yep Working"
-    }
-  })
-
-  handler.holyShit = "that's Awesome!"
-
+  handler.holyShit = "that's Awesome!";
 });
 
 app.render(Index);
-
 </script>
 </body>
 </html>
