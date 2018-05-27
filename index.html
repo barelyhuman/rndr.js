@@ -9,14 +9,14 @@
 <body>
   <div class="app">
     <div>
-      {{message}}
+      {{count}}
     </div>
-    <div>
-      {{functionText()}}
-    </div>
-    <div>
-      {{holyShit}}
-    </div>
+    <button @click='increaseCount'>
+      Add
+    </button>
+    <button @click='decreaseCount'>
+      decrease
+    </button>
   </div>
   <script src="./dist/rndr.bundle.js"></script>
   <script>
@@ -26,16 +26,25 @@
 
 let Index = app.module(function(handler, elem) {
   app.ext(handler, {
-    message: "Working?",
-    functionText: function() {
-      return "Yep Working";
-    } 
+    count: "0",
+    increaseCount:function(){
+      var count = parseInt(handler.count)
+      app.update({
+        count: count += 1
+      })
+    },
+    decreaseCount:function(){
+      var count = parseInt(handler.count);
+      app.update({
+        count:count-=1
+      })
+    }
   });
 
-  handler.holyShit = "that's Awesome!";
 });
 
 app.render(Index);
+
 </script>
 </body>
 </html>
